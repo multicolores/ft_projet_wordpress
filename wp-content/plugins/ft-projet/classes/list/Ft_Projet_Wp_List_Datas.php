@@ -126,8 +126,8 @@ class Ft_Projet_Wp_List_Datas extends WP_List_Table
             return;
 
         if ($majeur)
-            printf("<input data-id=$id type='checkbox' name='majeur' checked>");
+            printf("<input data-id=$id type='checkbox' name='majeur' checked class='majeur_checkBox'>");
         else
-            printf("<input data-id=$id type='checkbox' name='majeur'>");
+            printf("<input data-id=$id type='checkbox' name='majeur' class='majeur_checkBox'>");
     }
 }
