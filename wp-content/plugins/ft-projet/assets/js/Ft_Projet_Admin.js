@@ -1,8 +1,5 @@
 jQuery(document).ready(function () {
   jQuery(".majeur_checkBox").change(function (e) {
-    console.log("checked");
-    console.log(e);
-    console.log(jQuery(this).data("id"));
     let datas;
 
     if (this.checked)
@@ -21,7 +18,23 @@ jQuery(document).ready(function () {
       };
 
     jQuery.post(ajaxurl, datas, function (rs) {
-      console.log(rs);
+      jQuery(".is-dismissible").show("slow");
+
+      setTimeout(() => {
+        jQuery(".is-dismissible").hide("slow");
+      }, "1000");
+      return false;
+    });
+  });
+  jQuery(".select-note").change(function (e) {
+    const datas = {
+      action: "ftprojetnote",
+      security: ftadminscript.security,
+      id: jQuery(this).data("id"),
+      noteValue: jQuery(this).val(),
+    };
+
+    jQuery.post(ajaxurl, datas, function (rs) {
       jQuery(".is-dismissible").show("slow");
 
       setTimeout(() => {
