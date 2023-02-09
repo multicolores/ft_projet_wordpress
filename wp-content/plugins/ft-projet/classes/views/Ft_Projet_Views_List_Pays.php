@@ -4,7 +4,6 @@ class Ft_Projet_Views_List_Pays
 {
     public function display()
     {
-        // echo '<h1>Page Ft_Projet_Views_List_Pays yes</h1>';
         $Wp_List = new Ft_Projet_Wp_List_Datas();
         $tempscreen = get_current_screen();
         $this->_screen = $tempscreen->base;
@@ -32,11 +31,8 @@ class Ft_Projet_Views_List_Pays
     <?php
     }
 
-
-
     private function toolbar()
     {
-
     ?>
         <div>
             <form action="<?php print admin_url('admin-post.php'); ?>" method="post">
@@ -44,7 +40,6 @@ class Ft_Projet_Views_List_Pays
                     <tbody>
                         <tr>
                             <?php if (defined('INSSET_PLUGIN_NAME')) : ?>
-
                                 <td>
                                     <a href="<?php print plugins_url(FT_PROJET_PLUGIN_NAME . '/classes/export/Ft_Projet_Export_XML.php'); ?>" class="button button-secondary">
                                         Export XML
@@ -55,7 +50,6 @@ class Ft_Projet_Views_List_Pays
                     </tbody>
                 </table>
             </form>
-
         </div>
 <?php
 

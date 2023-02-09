@@ -13,43 +13,60 @@ class Ft_Projet_Install
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
+
         $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
+        $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
+        $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
 
-
-        if ($this->isTableBaseAlreadyCreated($table_name_pays))
+        if ($this->isTableBaseAlreadyCreated($table_name_pays, $table_name_prospects, $table_name_prospects_pays))
             return;
 
         $sql_create_pays_table = "CREATE TABLE IF NOT EXISTS $table_name_pays (
-                id mediumint(9) NOT NULL AUTO_INCREMENT,
-                nom VARCHAR(255) NOT NULL,
-                code_iso VARCHAR(255) NOT NULL,
-                note SMALLINT(6) NOT NULL,
-                majeur SMALLINT(6) NOT NULL,
-                disponible SMALLINT(6) NOT NULL,
-                PRIMARY KEY (id)
-            ) $charset_collate;";
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            nom VARCHAR(255) NOT NULL,
+            code_iso VARCHAR(255) NOT NULL,
+            note SMALLINT(6) NOT NULL,
+            majeur SMALLINT(6) NOT NULL,
+            disponible SMALLINT(6) NOT NULL,
+            PRIMARY KEY (id)
+        ) $charset_collate;";
 
-        // pour majeur et disponible la valeur 0 correspond false c'est à dire pas besoin d'être majeur / n'est pas disponible et la valeur 1 correspond à true
+        $sql_create_prospects_table = "CREATE TABLE IF NOT EXISTS $table_name_prospects (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            nom VARCHAR(255) NOT NULL,
+            prenom VARCHAR(255) NOT NULL,
+            sexe VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            date_naissance DATETIME NOT NULL,
+            PRIMARY KEY (id)
+        ) $charset_collate;";
+
+        $sql_create_prospects_pays = "CREATE TABLE IF NOT EXISTS $table_name_prospects_pays (
+                id_prospects mediumint(9) NOT NULL,
+                id_pays mediumint(9) NOT NULL,
+                FOREIGN KEY (id_prospects) REFERENCES $table_name_prospects(id),
+                FOREIGN KEY (id_pays) REFERENCES $table_name_pays(id)
+        ) $charset_collate;";
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
         if (dbDelta($sql_create_pays_table)) {
-
             $this->createBasePays($table_name_pays);
-
-            return;
+            if (dbDelta($sql_create_prospects_table))
+                if (dbDelta($sql_create_prospects_pays))
+                    return;
         }
-
-        return;
     }
 
-    public function isTableBaseAlreadyCreated()
+    public function isTableBaseAlreadyCreated($table_name_pays, $table_name_prospects, $table_name_prospects_pays)
     {
         global $wpdb;
 
-        $sql = 'SHOW TABLES LIKE \'%' . $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . "_pays" . '%\'';
+        $sqlPays = 'SHOW TABLES LIKE \'%' . $table_name_pays . '%\'';
+        $sqlProspects = 'SHOW TABLES LIKE \'%' . $table_name_prospects . '%\'';
+        $sqlProspectsPays = 'SHOW TABLES LIKE \'%' . $table_name_prospects_pays . '%\'';
 
-        return $wpdb->get_var($sql);
+        return $wpdb->get_var($sqlPays) && $wpdb->get_var($sqlProspects) && $wpdb->get_var($sqlProspectsPays);
     }
 
     public function createBasePays($table_name_pays)
