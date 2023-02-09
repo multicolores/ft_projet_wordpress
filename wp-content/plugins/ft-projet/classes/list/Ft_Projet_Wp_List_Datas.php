@@ -131,7 +131,7 @@ class Ft_Projet_Wp_List_Datas extends WP_List_Table
             printf("<input data-id=$id type='checkbox' name='majeur' class='majeur_checkBox'>");
     }
 
-    // ajoue d'un style pour les pays non disponible 
+    // ajoue d'un style pour les pays indisponible 
     public function single_row($item)
     {
         $cssClass = ($item['disponible'] == 1) ? '' : 'ft_grid_disable_row';

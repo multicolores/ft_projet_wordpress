@@ -8,3 +8,7 @@
   pointer-events: none !important;
   user-select: none !important;
 }
+
+#ft-pays-multiselect {
+  height: 300px !important;
+}
