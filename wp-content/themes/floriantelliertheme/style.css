@@ -1,4 +1,25 @@
 @import "assets/css/reset.css";
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
+}
 /*
 Theme Name:   Florian TELLIER Theme
 Theme URI:    http://example.com/florian-tellier-theme/
@@ -11,3 +32,24 @@ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
 Text Domain:  ft-theme
 */
+body {
+  font-family: "Montserrat";
+}
+header {
+  padding: 7vh 5vw;
+}
+header h1 {
+  font-size: 2em;
+  font-weight: 900;
+}
+footer {
+  padding: 7vh 5vw;
+  border-top: 1px solid black;
+}
+footer p {
+  font-size: 1em;
+  text-align: end;
+}
+.ft_main_content_container {
+  padding: 10vh 10vw;
+}
