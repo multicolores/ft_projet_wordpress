@@ -53,4 +53,25 @@ class Ft_Projet_Crud_Index
 
         return "update done";
     }
+
+    public function createProspect($nom, $prenom, $sexe, $email, $date_naissance)
+    {
+        global $wpdb;
+
+        $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
+
+        if ($wpdb->insert(
+            $table_name_prospects,
+            array(
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'sexe' => $sexe,
+                'email' => $email,
+                'date_naissance' => $date_naissance,
+            )
+        ))
+            return "Insert done";
+        else
+            return "Erreur";
+    }
 }

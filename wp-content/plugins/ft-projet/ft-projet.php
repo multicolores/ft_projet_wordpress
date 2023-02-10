@@ -18,6 +18,7 @@ define('FT_PROJET_DIR', dirname(FT_PROJET_FILE));
 define('FT_PROJET_BASENAME', pathinfo((FT_PROJET_FILE))['filename']);
 define('FT_PROJET_PLUGIN_NAME', FT_PROJET_BASENAME);
 define('FT_PROJET_BASE_TABLE_NAME', "ft_projet");
+define('FT_PROJET_URL_STEP_1', '/choix-voyage');
 
 foreach (glob(FT_PROJET_DIR . '/classes/*/*.php') as $filename)
     if (!preg_match('/export|cron/i', $filename))
