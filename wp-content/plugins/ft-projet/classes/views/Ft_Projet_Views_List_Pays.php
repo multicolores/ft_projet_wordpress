@@ -39,7 +39,7 @@ class Ft_Projet_Views_List_Pays
                 <table>
                     <tbody>
                         <tr>
-                            <?php if (defined('INSSET_PLUGIN_NAME')) : ?>
+                            <?php if (defined('FT_PROJET_PLUGIN_NAME')) : ?>
                                 <td>
                                     <a href="<?php print plugins_url(FT_PROJET_PLUGIN_NAME . '/classes/export/Ft_Projet_Export_XML.php'); ?>" class="button button-secondary">
                                         Export XML
