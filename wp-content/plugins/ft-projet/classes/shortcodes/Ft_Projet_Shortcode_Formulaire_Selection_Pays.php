@@ -16,7 +16,7 @@ class Ft_Projet_Shortcode_Formulaire_Selection_Pays
         endforeach;
 
         return "
-        <form id='ft-form-inscription'>
+        <form id='ft-form-pays-list-select'>
             <fieldset>
                 <legend>Vos Pays</legend>
                 
@@ -62,7 +62,7 @@ class Ft_Projet_Shortcode_Formulaire_Selection_Pays
 
             </fieldset>
 
-            <button id='ft-submit-button-inscription' class='disable'>Suivant</button>
+            <button class='disable-select-pays' id='ft-form-submit-pays-list-select'>Valider mes choix</button>
         </form>
 ";
     }

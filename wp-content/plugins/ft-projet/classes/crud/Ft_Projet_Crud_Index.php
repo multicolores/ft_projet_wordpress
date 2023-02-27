@@ -107,4 +107,43 @@ class Ft_Projet_Crud_Index
         else
             return "Erreur";
     }
+
+
+    public function resetPaysOfProspect($prospectId)
+    {
+        global $wpdb;
+
+        $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
+
+        if ($wpdb->delete(
+            $table_name_prospects_pays,
+            array(
+                'id_prospects' => $prospectId,
+            )
+        ))
+            return "Delete done";
+        else
+            return "Erreur";
+    }
+
+    public function createProspectPaysRelation($prospectId, $paysId)
+    {
+        global $wpdb;
+
+        if ($paysId == null || $prospectId == null)
+            return "Aucun prospect ou pays renseigné";
+
+        $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
+
+        if ($wpdb->insert(
+            $table_name_prospects_pays,
+            array(
+                'id_prospects' => $prospectId,
+                'id_pays' => $paysId,
+            )
+        ))
+            return "Insert done";
+        else
+            return "Erreur";
+    }
 }
