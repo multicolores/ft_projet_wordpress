@@ -1,0 +1,5 @@
+.disable-select-pays {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}

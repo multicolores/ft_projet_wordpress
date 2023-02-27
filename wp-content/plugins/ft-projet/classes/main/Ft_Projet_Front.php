@@ -23,6 +23,8 @@ class Ft_Projet_Front
             )
         );
 
+        wp_enqueue_style('ft-front-style-new', plugins_url(FT_PROJET_PLUGIN_NAME)  . '/assets/css/Ft_Projet_Front_style.css');
+
         return;
     }
 }

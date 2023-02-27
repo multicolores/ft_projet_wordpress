@@ -36,6 +36,39 @@ class Ft_Projet_Crud_Index
         return $wpdb->get_results($sql, 'ARRAY_A');
     }
 
+    static function getPaysAboutProspectAge()
+    {
+
+        // il n'y as pas de système d'authentification donc on récupère toujours le premier prospect ( une nouvelle inscription dans le formulaire remplace la première ligne )
+        global $wpdb;
+        $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
+
+        $sqlGetPropectInfo = "SELECT * FROM $table_name_prospects WHERE `id`=1";
+        $prospect = $wpdb->get_results($sqlGetPropectInfo, 'ARRAY_A');
+
+
+        $dateNaissance = $prospect['0']['date_naissance'];
+        $aujourdhui = date("Y-m-d");
+        $dateDiff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
+        $age = $dateDiff->format('%y');
+
+        if ($age >= 18) {
+            // le prospect est majeur
+            $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
+
+            $sql = "SELECT * FROM $table_name_pays WHERE `disponible`=1";
+
+            return $wpdb->get_results($sql, 'ARRAY_A');
+        } else {
+            // le prospect est mineur
+            $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
+
+            $sql = "SELECT * FROM $table_name_pays WHERE `disponible`=1 AND `majeur`=0";
+
+            return $wpdb->get_results($sql, 'ARRAY_A');
+        }
+    }
+
     static function updatePaysDisponible($idsListToChange)
     {
         global $wpdb;
