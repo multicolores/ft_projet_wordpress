@@ -9,11 +9,14 @@
 
 // @list: "\f005", "\f005 \f005 \f005", "\f005", "\f005";
 // @tvalue: extract(@list, 2);
-
-.disable-select-pays {
+.disable() {
   opacity: 0.3 !important;
   pointer-events: none !important;
   user-select: none !important;
+}
+
+.disable-select-pays {
+  .disable();
 }
 
 #ft-form-pays-recap {
@@ -53,7 +56,6 @@
         font-family: "FontAwesome";
         font-weight: 900;
         display: inline-block;
-        font-weight: 900;
       }
     }
 
@@ -177,4 +179,63 @@
   justify-content: center;
   align-items: center;
   padding: 2vh 0;
+}
+
+.ft-nav-formulaire-file-ariane {
+  padding-bottom: 7vh;
+  a {
+    margin: 0 10px;
+    border: none !important;
+    position: relative;
+    &:not(:last-child) {
+      &::after {
+        content: "\f054";
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.25em;
+        font-family: "FontAwesome";
+        font-weight: 900;
+      }
+    }
+    &::before {
+      content: "";
+      width: 70%;
+      height: 5px;
+      background-color: @darkColor;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      margin-left: 50%;
+      border-radius: 5px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: 0.5s @ease_out;
+    }
+    &:hover {
+      background-color: white;
+      color: @darkColor;
+      &::before {
+        opacity: 1;
+        bottom: -5px;
+      }
+    }
+  }
+}
+.active-link {
+  &::before {
+    background-color: #9ffad9 !important;
+    opacity: 1 !important;
+    bottom: -5px !important;
+  }
+  &:hover {
+    &::before {
+      background-color: #09f59e !important;
+    }
+  }
+}
+
+.disable-link {
+  .disable();
 }

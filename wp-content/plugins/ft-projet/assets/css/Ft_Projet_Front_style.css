@@ -38,8 +38,8 @@
 .ft_pays_list_container li span:before {
   font-size: 1.25em;
   font-family: "FontAwesome";
-  display: inline-block;
   font-weight: 900;
+  display: inline-block;
 }
 .ft_pays_list_container li .star-1:before {
   content: "\f005";
@@ -125,4 +125,57 @@
   justify-content: center;
   align-items: center;
   padding: 2vh 0;
+}
+.ft-nav-formulaire-file-ariane {
+  padding-bottom: 7vh;
+}
+.ft-nav-formulaire-file-ariane a {
+  margin: 0 10px;
+  border: none !important;
+  position: relative;
+}
+.ft-nav-formulaire-file-ariane a:not(:last-child)::after {
+  content: "\f054";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25em;
+  font-family: "FontAwesome";
+  font-weight: 900;
+}
+.ft-nav-formulaire-file-ariane a::before {
+  content: "";
+  width: 70%;
+  height: 5px;
+  background-color: #272727;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  margin-left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.ft-nav-formulaire-file-ariane a:hover {
+  background-color: white;
+  color: #272727;
+}
+.ft-nav-formulaire-file-ariane a:hover::before {
+  opacity: 1;
+  bottom: -5px;
+}
+.active-link::before {
+  background-color: #9ffad9 !important;
+  opacity: 1 !important;
+  bottom: -5px !important;
+}
+.active-link:hover::before {
+  background-color: #09f59e !important;
+}
+.disable-link {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  user-select: none !important;
 }

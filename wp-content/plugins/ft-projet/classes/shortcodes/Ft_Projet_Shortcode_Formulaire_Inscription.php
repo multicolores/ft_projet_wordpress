@@ -46,7 +46,7 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
                 <h1>Vos pays déjà selectionné : </h1>
                 <div class='map-container'>
                     <div id='ft-pays-map' style='width: 900px; height: 500px;'></div>
-                    <a href='" . get_permalink(get_page_by_path(FT_PROJET_URL_STEP_2)->ID) . "'>Réinitialiser mes choix</a>
+                    <button id='ft-reinitialisation-choix-boutton'>Réinitialiser mes choix</button>
                 </div>
             ";
         }

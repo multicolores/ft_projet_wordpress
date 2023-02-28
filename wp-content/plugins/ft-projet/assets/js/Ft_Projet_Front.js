@@ -8,7 +8,6 @@ jQuery(document).ready(function () {
       window.history.back();
     }
   } else if (window.location.pathname.includes("choix-voyage-step-final")) {
-    console.log("je passe par ici");
     if (!sessionStorage.getItem("userAuthorisation").includes("step3")) {
       window.history.back();
     }
@@ -56,6 +55,17 @@ jQuery(document).ready(function () {
         return false;
       },
     });
+  });
+
+  jQuery("#ft-reinitialisation-choix-boutton").click(function (e) {
+    sessionStorage.setItem("userAuthorisation", "step1,step2");
+
+    window.location.href =
+      window.location.origin +
+      window.location.pathname.replace(
+        "choix-voyage",
+        "choix-voyage-step-select"
+      );
   });
 
   //---STEP 2 SELECT PAYS
@@ -160,4 +170,20 @@ jQuery(document).ready(function () {
       return false;
     });
   });
+
+  // ----- file d'ariane | activation des bouttons en fonction de l'avancement du user ------
+  if (sessionStorage.getItem("userAuthorisation").includes("step2"))
+    jQuery("#ft-nav-link-step2").removeClass("disable-link");
+
+  if (sessionStorage.getItem("userAuthorisation").includes("step3"))
+    jQuery("#ft-nav-link-step3").removeClass("disable-link");
+
+  // set active link
+  if (window.location.pathname.includes("choix-voyage-step-select")) {
+    jQuery("#ft-nav-link-step2").addClass("active-link");
+  } else if (window.location.pathname.includes("choix-voyage-step-final")) {
+    jQuery("#ft-nav-link-step3").addClass("active-link");
+  } else {
+    jQuery("#ft-nav-link-step1").addClass("active-link");
+  }
 });
