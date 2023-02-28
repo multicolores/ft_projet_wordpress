@@ -156,20 +156,24 @@ class Ft_Projet_Crud_Index
 
         $paysIds =  $wpdb->get_results($sqlGetPaysIdsOfProspect, 'ARRAY_A');
 
-        $paysIdsSql = "";
+        if (sizeof($paysIds) != 0) {
+            $paysIdsSql = "";
 
-        foreach ($paysIds as $pays) :
-            $paysIdsSql .= "`id`=" . $pays['id_pays'] . " OR ";
-        endforeach;
+            foreach ($paysIds as $pays) :
+                $paysIdsSql .= "`id`=" . $pays['id_pays'] . " OR ";
+            endforeach;
 
-        // remove the last 'OR'
-        $paysIdsSql = substr($paysIdsSql, 0, -3);
+            // remove the last 'OR'
+            $paysIdsSql = substr($paysIdsSql, 0, -3);
 
-        $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
+            $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
 
-        $sql = "SELECT * FROM $table_name_pays WHERE $paysIdsSql";
+            $sql = "SELECT * FROM $table_name_pays WHERE $paysIdsSql";
 
-        return $wpdb->get_results($sql, 'ARRAY_A');
+            return $wpdb->get_results($sql, 'ARRAY_A');
+        } else {
+            return [];
+        }
     }
 
     public function getProspectById($prospectId)

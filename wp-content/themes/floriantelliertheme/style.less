@@ -93,6 +93,24 @@ button {
   }
 }
 
+a {
+  background-color: #fefcfc00;
+  color: @darkColor;
+  padding: 10px 15px;
+  border: 1px solid lighten(@darkColor, 20%);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: bold;
+  .transition();
+  .rounded(7px);
+
+  &:hover {
+    background-color: lighten(@darkColor, 20%);
+    color: @lightColor;
+  }
+}
+
 // ---- loading ----
 #ft-loading-container {
   display: none;

@@ -7,7 +7,52 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
 
     static function display($atts)
     {
-        return "
+
+        $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
+        $prospectId = '1';
+        $paysList = $Ft_Projet_Crud_Index->getProspectPays($prospectId);
+
+        $mapHTML = "";
+        // check si le prospect a déjà des pays selectionné
+        if (sizeof($paysList) != 0) {
+            $paysListData = "[['Country'],";
+            foreach ($paysList as $pays) :
+                $paysListData .= "['" . $pays['nom'] . "'],";
+            endforeach;
+            $paysListData = substr($paysListData, 0, -1);
+
+            $paysListData .= "]";
+
+            $mapHTML = "
+                <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+                <script type='text/javascript'>
+                    google.charts.load('current', {
+                    'packages':['geochart'],
+                    });
+                    google.charts.setOnLoadCallback(drawRegionsMap);
+            
+                    function drawRegionsMap() {
+                    var data = google.visualization.arrayToDataTable(" . $paysListData . ");
+            
+                    var options = {};
+            
+                    var chart = new google.visualization.GeoChart(document.getElementById('ft-pays-map'));
+            
+                    chart.draw(data, options);
+                    }
+                </script>
+                    
+                <h1>Vos pays déjà selectionné : </h1>
+                <div class='map-container'>
+                    <div id='ft-pays-map' style='width: 900px; height: 500px;'></div>
+                    <a href='/wordpress/choix-voyage/'>Réinitialiser mes choix</a>
+                </div>
+            ";
+        }
+
+
+
+        return $mapHTML . "
         <form id='ft-form-inscription'>
             <fieldset>
                 <legend>Vos informations</legend>
