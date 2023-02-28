@@ -5,6 +5,10 @@ add_action('wp_ajax_nopriv_ftprojetcreateprospect', array('Ft_Projet_Front_Actio
 add_action('wp_ajax_ftprojetcreateuserpayslist', array('Ft_Projet_Front_Actions_Index', 'create_pays_list_of_prospect'));
 add_action('wp_ajax_nopriv_ftprojetcreateuserpayslist', array('Ft_Projet_Front_Actions_Index', 'create_pays_list_of_prospect'));
 
+
+add_action('wp_ajax_ftprojetgetpropspectinfo', array('Ft_Projet_Front_Actions_Index', 'get_prospect_info'));
+add_action('wp_ajax_nopriv_ftprojetgetpropspectinfo', array('Ft_Projet_Front_Actions_Index', 'get_prospect_info'));
+
 class Ft_Projet_Front_Actions_Index
 {
     public static function create_prospect()
@@ -41,6 +45,28 @@ class Ft_Projet_Front_Actions_Index
                     $Ft_Projet_Crud_Index->createProspectPaysRelation($prospectId, $value);
 
         print 'done';
+
+        exit;
+    }
+
+    public static function get_prospect_info()
+    {
+        check_ajax_referer('ajax_nonce_security', 'security');
+
+        if ((!isset($_REQUEST)) || sizeof(@$_REQUEST) < 1)
+            exit;
+
+        $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
+
+
+        $prospectId = '1';
+        $prospectInfo = $Ft_Projet_Crud_Index->getProspectById($prospectId);
+        $responseString = "";
+        foreach ($prospectInfo as $prospect) :
+            $responseString .=  $prospect['nom'] . ';' . $prospect['prenom'] . ';' . $prospect['sexe'];
+        endforeach;
+
+        print $responseString;
 
         exit;
     }

@@ -146,4 +146,40 @@ class Ft_Projet_Crud_Index
         else
             return "Erreur";
     }
+
+    public function getProspectPays($prospectId)
+    {
+        global $wpdb;
+        $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
+
+        $sqlGetPaysIdsOfProspect = "SELECT `id_pays` FROM $table_name_prospects_pays WHERE `id_prospects`=$prospectId";
+
+        $paysIds =  $wpdb->get_results($sqlGetPaysIdsOfProspect, 'ARRAY_A');
+
+        $paysIdsSql = "";
+
+        foreach ($paysIds as $pays) :
+            $paysIdsSql .= "`id`=" . $pays['id_pays'] . " OR ";
+        endforeach;
+
+        // remove the last 'OR'
+        $paysIdsSql = substr($paysIdsSql, 0, -3);
+
+        $table_name_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_pays';
+
+        $sql = "SELECT * FROM $table_name_pays WHERE $paysIdsSql";
+
+        return $wpdb->get_results($sql, 'ARRAY_A');
+    }
+
+    public function getProspectById($prospectId)
+    {
+
+        global $wpdb;
+        $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
+
+        $sql = "SELECT * FROM $table_name_prospects WHERE `id`=$prospectId";
+
+        return $wpdb->get_results($sql, 'ARRAY_A');
+    }
 }

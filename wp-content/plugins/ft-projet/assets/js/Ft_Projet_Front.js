@@ -85,4 +85,37 @@ jQuery(document).ready(function () {
       },
     });
   });
+
+  //---STEP 3 CONFIRMATION PAYS
+  jQuery("#ft-form-pays-recap").click(function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const datas = {
+      action: "ftprojetgetpropspectinfo",
+      security: ftprojetscript.security,
+    };
+    let prospectInfo;
+
+    jQuery.post(ftprojetscript.ajax_url, datas, function (rs) {
+      console.log(rs);
+      prospectInfo = rs.split(";");
+
+      // TODO load le handlebars d'un autre fichier
+      const template = Handlebars.compile(
+        "<div class='modalboxContent'><p>Merci {{sexe}} {{nom}} {{prenom}} pour votre choix !</p><a href='/wordpress/choix-voyage'>Retour</a></div>"
+      );
+
+      const context = {
+        nom: prospectInfo[0],
+        prenom: prospectInfo[1],
+        sexe: prospectInfo[2] == "Homme" ? "Mr" : "Mme",
+      };
+
+      const html = template(context);
+      document.getElementById("handlebarsModalBox").innerHTML = html;
+      jQuery("#handlebarsModalBox").addClass("show-modal-box");
+      return false;
+    });
+  });
 });
