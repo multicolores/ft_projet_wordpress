@@ -13,6 +13,7 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
         $paysList = $Ft_Projet_Crud_Index->getProspectPays($prospectId);
 
         $mapHTML = "";
+
         // check si le prospect a déjà des pays selectionné
         if (sizeof($paysList) != 0) {
             $paysListData = "[['Country'],";
@@ -45,7 +46,7 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
                 <h1>Vos pays déjà selectionné : </h1>
                 <div class='map-container'>
                     <div id='ft-pays-map' style='width: 900px; height: 500px;'></div>
-                    <a href='/wordpress/choix-voyage/'>Réinitialiser mes choix</a>
+                    <a href='" . get_permalink(get_page_by_path(FT_PROJET_URL_STEP_2)->ID) . "'>Réinitialiser mes choix</a>
                 </div>
             ";
         }

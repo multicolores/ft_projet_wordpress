@@ -29,8 +29,16 @@ jQuery(document).ready(function () {
       data: formData,
       type: "post",
       success: function (rs, textStatus, jqXHR) {
-        console.log(rs);
-        jQuery("#ft-loading-container").hide();
+        // console.log(rs);
+        // jQuery("#ft-loading-container").hide();
+
+        window.location.href =
+          window.location.origin +
+          window.location.pathname.replace(
+            "choix-voyage",
+            "choix-voyage-step-select"
+          );
+
         return false;
       },
     });
@@ -80,7 +88,14 @@ jQuery(document).ready(function () {
       data: formData,
       type: "post",
       success: function (rs, textStatus, jqXHR) {
-        jQuery("#ft-loading-container").hide();
+        // jQuery("#ft-loading-container").hide();
+
+        window.location.href =
+          window.location.origin +
+          window.location.pathname.replace(
+            "choix-voyage-step-select",
+            "choix-voyage-step-final"
+          );
         return false;
       },
     });
@@ -102,8 +117,17 @@ jQuery(document).ready(function () {
       prospectInfo = rs.split(";");
 
       // TODO load le handlebars d'un autre fichier
+      const choix_voyage_url =
+        window.location.origin +
+        window.location.pathname.replace(
+          "choix-voyage-step-final",
+          "choix-voyage"
+        );
+
       const template = Handlebars.compile(
-        "<div class='modalboxContent'><p>Merci {{sexe}} {{nom}} {{prenom}} pour votre choix !</p><a href='/wordpress/choix-voyage'>Retour</a></div>"
+        "<div class='modalboxContent'><p>Merci {{sexe}} {{nom}} {{prenom}} pour votre choix !</p><a href='" +
+          choix_voyage_url +
+          "'>Retour</a></div>"
       );
 
       const context = {

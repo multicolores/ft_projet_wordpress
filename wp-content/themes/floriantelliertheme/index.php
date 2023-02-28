@@ -14,11 +14,21 @@
     <div class="ft_main_content_container">
         <?php if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>
-                <!-- <a href="<?php the_permalink() ?>"><?php the_title() ?></a> -->
                 <?php the_content() ?>
             <?php endwhile; ?>
         <?php else : ?>
-            <p>There are no posts !</p>
+
+            <ul class="links_list">
+                <li>
+                    <a href="<?php print get_permalink(get_page_by_path("/choix-voyage")->ID) ?>">/choix-voyage</a>
+                </li>
+                <li>
+                    <a href="<?php print get_permalink(get_page_by_path("/choix-voyage-step-select")->ID) ?>">/choix-voyage-step-select</a>
+                </li>
+                <li>
+                    <a href="<?php print get_permalink(get_page_by_path("/choix-voyage-step-final")->ID) ?>">/choix-voyage-step-final</a>
+                </li>
+            </ul>
         <?php endif; ?>
     </div>
 

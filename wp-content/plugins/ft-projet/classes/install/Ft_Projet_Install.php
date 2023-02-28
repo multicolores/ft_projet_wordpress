@@ -118,7 +118,6 @@ class Ft_Projet_Install
             'CHE' => 'Switzerland',
             'CHL' => 'Chile',
             'CHN' => 'China',
-            'CIV' => 'Côte d\'Ivoire',
             'CMR' => 'Cameroon',
             'COD' => 'Congo, the Democratic Republic of the',
             'COG' => 'Congo',

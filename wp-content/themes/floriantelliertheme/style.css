@@ -221,3 +221,6 @@ a:hover {
     height: 32px;
   }
 }
+.links_list li {
+  margin: 50px 0;
+}
