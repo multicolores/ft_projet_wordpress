@@ -1,6 +1,20 @@
 jQuery(document).ready(function () {
-  //---STEP 1 USER INSCRIPTION
+  !sessionStorage.getItem("userAuthorisation") &&
+    sessionStorage.setItem("userAuthorisation", "step1");
 
+  //redirection si on est pas authorisé à aller sur la pages
+  if (window.location.pathname.includes("choix-voyage-step-select")) {
+    if (!sessionStorage.getItem("userAuthorisation").includes("step2")) {
+      window.history.back();
+    }
+  } else if (window.location.pathname.includes("choix-voyage-step-final")) {
+    console.log("je passe par ici");
+    if (!sessionStorage.getItem("userAuthorisation").includes("step3")) {
+      window.history.back();
+    }
+  }
+
+  //---STEP 1 USER INSCRIPTION
   jQuery("#ft-form-inscription").submit(function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -29,8 +43,8 @@ jQuery(document).ready(function () {
       data: formData,
       type: "post",
       success: function (rs, textStatus, jqXHR) {
-        // console.log(rs);
-        // jQuery("#ft-loading-container").hide();
+        //update authorisation sessionStorage value
+        sessionStorage.setItem("userAuthorisation", "step1,step2");
 
         window.location.href =
           window.location.origin +
@@ -88,7 +102,8 @@ jQuery(document).ready(function () {
       data: formData,
       type: "post",
       success: function (rs, textStatus, jqXHR) {
-        // jQuery("#ft-loading-container").hide();
+        //update authorisation sessionStorage value
+        sessionStorage.setItem("userAuthorisation", "step1,step2,step3");
 
         window.location.href =
           window.location.origin +
@@ -139,6 +154,9 @@ jQuery(document).ready(function () {
       const html = template(context);
       document.getElementById("handlebarsModalBox").innerHTML = html;
       jQuery("#handlebarsModalBox").addClass("show-modal-box");
+
+      //reset authorisation sessionStorage value
+      sessionStorage.setItem("userAuthorisation", "step1");
       return false;
     });
   });
