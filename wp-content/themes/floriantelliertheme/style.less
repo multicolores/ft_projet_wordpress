@@ -12,7 +12,12 @@ Text Domain:  ft-theme
 */
 
 @import "./assets/css/reset.css";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap");
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/webfonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("truetype");
+}
 
 @import (less) "./assets/css/formulaireBaseStyle.less";
 @import (less, reference) "./assets/css/_mixin.less";
