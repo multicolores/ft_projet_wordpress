@@ -27,7 +27,6 @@ class Ft_Projet_Shortcode_Formulaire_Recap_Pays
 
             <div id='handlebarsModalBox'></div>
 
-            <script src='https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js'></script>
             ";
     }
 }

@@ -138,10 +138,8 @@ jQuery(document).ready(function () {
     let prospectInfo;
 
     jQuery.post(ftprojetscript.ajax_url, datas, function (rs) {
-      console.log(rs);
       prospectInfo = rs.split(";");
 
-      // TODO load le handlebars d'un autre fichier
       const choix_voyage_url =
         window.location.origin +
         window.location.pathname.replace(
@@ -149,20 +147,24 @@ jQuery(document).ready(function () {
           "choix-voyage"
         );
 
-      const template = Handlebars.compile(
-        "<div class='modalboxContent'><p>Merci {{sexe}} {{nom}} {{prenom}} pour votre choix !</p><a href='" +
-          choix_voyage_url +
-          "'>Retour</a></div>"
-      );
-
       const context = {
         nom: prospectInfo[0],
         prenom: prospectInfo[1],
         sexe: prospectInfo[2] == "Homme" ? "Mr" : "Mme",
+        url: choix_voyage_url,
       };
 
-      const html = template(context);
-      document.getElementById("handlebarsModalBox").innerHTML = html;
+      const source = jQuery("#ft-confirmations-modal-box-template-js").attr(
+        "src"
+      );
+      jQuery.ajax({
+        url: source,
+        success: function (source) {
+          const template = Handlebars.compile(source);
+          jQuery("#handlebarsModalBox").html(template(context));
+        },
+      });
+
       jQuery("#handlebarsModalBox").addClass("show-modal-box");
 
       //reset authorisation sessionStorage value
