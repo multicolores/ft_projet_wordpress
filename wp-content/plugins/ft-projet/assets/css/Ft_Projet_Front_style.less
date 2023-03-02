@@ -59,74 +59,22 @@
       }
     }
 
-    //TODO - revenir ici et essayer de rassembler tousa là en une fonction
-    .star-1 {
-      &:before {
-        .repeat("\f005" , 1);
+    each(range(1, 5, 1), {
+      .star-@{index} {
+        &:before {
+          .repeat("\f005" , @index);
+        }
       }
-    }
-    .star-2 {
-      &:before {
-        .repeat("\f005" , 2);
-      }
-    }
+    });
 
-    .star-3 {
-      &:before {
-        .repeat("\f005" , 3);
-      }
-    }
-
-    .star-4 {
-      &:before {
-        .repeat("\f005" , 4);
-      }
-    }
-
-    .star-5 {
-      &:before {
-        .repeat("\f005" , 5);
-      }
-    }
-
-    .empty-star-5 {
-      &:before {
+    each(range(1, 5, 1), {
+      .empty-star-@{index} {
+        &:before {
         font-weight: 500;
-        .repeat("\f005" , 5);
+        .repeat("\f005" , @index);
+        }
       }
-    }
-    .empty-star-4 {
-      &:before {
-        font-weight: 500;
-        .repeat("\f005" , 4);
-      }
-    }
-
-    .empty-star-3 {
-      &:before {
-        font-weight: 500;
-        .repeat("\f005" , 3);
-      }
-    }
-    .empty-star-2 {
-      &:before {
-        font-weight: 500;
-        .repeat("\f005" , 2);
-      }
-    }
-    .empty-star-1 {
-      &:before {
-        font-weight: 500;
-        .repeat("\f005" , 1);
-      }
-    }
-
-    .empty-star-0 {
-      &:before {
-        font-weight: 500;
-        .repeat("\f005" , 0);
-      }
-    }
+    });
   }
 }
 

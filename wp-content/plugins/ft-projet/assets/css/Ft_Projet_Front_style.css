@@ -56,28 +56,25 @@
 .ft_pays_list_container li .star-5:before {
   content: "\f005" "\f005" "\f005" "\f005" "\f005";
 }
-.ft_pays_list_container li .empty-star-5:before {
+.ft_pays_list_container li .empty-star-1:before {
   font-weight: 500;
-  content: "\f005" "\f005" "\f005" "\f005" "\f005";
-}
-.ft_pays_list_container li .empty-star-4:before {
-  font-weight: 500;
-  content: "\f005" "\f005" "\f005" "\f005";
-}
-.ft_pays_list_container li .empty-star-3:before {
-  font-weight: 500;
-  content: "\f005" "\f005" "\f005";
+  content: "\f005";
 }
 .ft_pays_list_container li .empty-star-2:before {
   font-weight: 500;
   content: "\f005" "\f005";
 }
-.ft_pays_list_container li .empty-star-1:before {
+.ft_pays_list_container li .empty-star-3:before {
   font-weight: 500;
-  content: "\f005";
+  content: "\f005" "\f005" "\f005";
 }
-.ft_pays_list_container li .empty-star-0:before {
+.ft_pays_list_container li .empty-star-4:before {
   font-weight: 500;
+  content: "\f005" "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .empty-star-5:before {
+  font-weight: 500;
+  content: "\f005" "\f005" "\f005" "\f005" "\f005";
 }
 #handlebarsModalBox {
   opacity: 0;

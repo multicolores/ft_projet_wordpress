@@ -12,7 +12,10 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
 
         $lastProspectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
 
-        $paysList = $Ft_Projet_Crud_Index->getProspectPays($lastProspectId);
+        if ($lastProspectId)
+            $paysList = $Ft_Projet_Crud_Index->getProspectPays($lastProspectId);
+        else
+            $paysList = [];
 
         $mapHTML = "";
 
