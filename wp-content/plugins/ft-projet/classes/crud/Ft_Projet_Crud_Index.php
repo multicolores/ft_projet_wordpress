@@ -36,14 +36,14 @@ class Ft_Projet_Crud_Index
         return $wpdb->get_results($sql, 'ARRAY_A');
     }
 
-    static function getPaysAboutProspectAge()
+    static function getPaysAboutProspectAge($prospectId)
     {
 
-        // il n'y as pas de système d'authentification donc on récupère toujours le premier prospect ( une nouvelle inscription dans le formulaire remplace la première ligne )
+        // il n'y as pas de système d'authentification donc on récupère toujours le dernier prospect ( une nouvelle inscription dans le formulaire )
         global $wpdb;
         $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
 
-        $sqlGetPropectInfo = "SELECT * FROM $table_name_prospects WHERE `id`=1";
+        $sqlGetPropectInfo = "SELECT * FROM $table_name_prospects WHERE `id`=$prospectId";
         $prospect = $wpdb->get_results($sqlGetPropectInfo, 'ARRAY_A');
 
 
@@ -185,5 +185,18 @@ class Ft_Projet_Crud_Index
         $sql = "SELECT * FROM $table_name_prospects WHERE `id`=$prospectId";
 
         return $wpdb->get_results($sql, 'ARRAY_A');
+    }
+
+    // il n'y as pas de système d'authentification donc on récupère toujours le dernier prospect ( une nouvelle inscription dans le formulaire )
+    public function getLastProspectCreatedID()
+    {
+        global $wpdb;
+        $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
+
+        $sql = "SELECT * FROM $table_name_prospects WHERE `id`= (SELECT MAX(`id`) FROM $table_name_prospects)";
+
+        $prospect = $wpdb->get_results($sql, 'ARRAY_A');
+
+        return $prospect[0]['id'];
     }
 }

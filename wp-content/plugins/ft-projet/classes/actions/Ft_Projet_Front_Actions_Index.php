@@ -37,7 +37,7 @@ class Ft_Projet_Front_Actions_Index
 
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
 
-        $prospectId = '1';
+        $prospectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
 
         if ($Ft_Projet_Crud_Index->resetPaysOfProspect($prospectId))
             foreach ($_REQUEST as $key => $value)
@@ -58,10 +58,11 @@ class Ft_Projet_Front_Actions_Index
 
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
 
-
-        $prospectId = '1';
+        $prospectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
         $prospectInfo = $Ft_Projet_Crud_Index->getProspectById($prospectId);
+
         $responseString = "";
+
         foreach ($prospectInfo as $prospect) :
             $responseString .=  $prospect['nom'] . ';' . $prospect['prenom'] . ';' . $prospect['sexe'];
         endforeach;

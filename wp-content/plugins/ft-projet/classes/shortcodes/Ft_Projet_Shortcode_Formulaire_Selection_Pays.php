@@ -8,7 +8,8 @@ class Ft_Projet_Shortcode_Formulaire_Selection_Pays
     static function display($atts)
     {
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
-        $paysList = $Ft_Projet_Crud_Index->getPaysAboutProspectAge();
+        $lastProspectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
+        $paysList = $Ft_Projet_Crud_Index->getPaysAboutProspectAge($lastProspectId);
 
         $paysOptionsList = "";
         foreach ($paysList as $pays) :

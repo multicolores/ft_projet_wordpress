@@ -74,7 +74,7 @@
 }
 .ft_pays_list_container li .empty-star-1:before {
   font-weight: 500;
-  content: "\f005" "\f005";
+  content: "\f005";
 }
 .ft_pays_list_container li .empty-star-0:before {
   font-weight: 500;

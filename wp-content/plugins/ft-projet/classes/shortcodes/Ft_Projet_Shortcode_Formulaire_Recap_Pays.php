@@ -8,7 +8,9 @@ class Ft_Projet_Shortcode_Formulaire_Recap_Pays
     static function display()
     {
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
-        $paysList = $Ft_Projet_Crud_Index->getProspectPays("1");
+        $lastProspectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
+
+        $paysList = $Ft_Projet_Crud_Index->getProspectPays($lastProspectId);
 
         $paysListHTML = "";
         foreach ($paysList as $pays) :
