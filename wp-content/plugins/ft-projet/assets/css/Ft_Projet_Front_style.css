@@ -1,0 +1,193 @@
+.disable-select-pays {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+#ft-form-pays-recap {
+  float: right;
+  margin-right: 20vw;
+}
+@media screen and (max-width: 960px) {
+  #ft-form-pays-recap {
+    margin-right: 0vw;
+  }
+}
+.ft_pays_list_container {
+  padding: 2vh 20vw;
+}
+@media screen and (max-width: 960px) {
+  .ft_pays_list_container {
+    padding: 2vh 0vw;
+  }
+}
+.ft_pays_list_container li {
+  padding: 5vh 5vw;
+  margin: 3vh 0;
+  border: 2px solid black;
+  border-radius: 30px;
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.ft_pays_list_container li:hover {
+  background-color: #272727;
+  color: #f8f8f8;
+  transform: scale(1.1);
+}
+.ft_pays_list_container li span:last-child {
+  margin-right: 30px;
+}
+.ft_pays_list_container li span:before {
+  font-size: 1.25em;
+  font-family: "FontAwesome";
+  font-weight: 900;
+  display: inline-block;
+}
+.ft_pays_list_container li .star-1:before {
+  content: "\f005";
+}
+.ft_pays_list_container li .star-2:before {
+  content: "\f005" "\f005";
+}
+.ft_pays_list_container li .star-3:before {
+  content: "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .star-4:before {
+  content: "\f005" "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .star-5:before {
+  content: "\f005" "\f005" "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .empty-star-1:before {
+  font-weight: 500;
+  content: "\f005";
+}
+.ft_pays_list_container li .empty-star-2:before {
+  font-weight: 500;
+  content: "\f005" "\f005";
+}
+.ft_pays_list_container li .empty-star-3:before {
+  font-weight: 500;
+  content: "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .empty-star-4:before {
+  font-weight: 500;
+  content: "\f005" "\f005" "\f005" "\f005";
+}
+.ft_pays_list_container li .empty-star-5:before {
+  font-weight: 500;
+  content: "\f005" "\f005" "\f005" "\f005" "\f005";
+}
+#handlebarsModalBox {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(235, 234, 234, 0.378);
+  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  backdrop-filter: blur(5px);
+}
+#handlebarsModalBox .modalboxContent {
+  padding: 6vh 4vw;
+  background-color: #272727;
+  color: #f8f8f8;
+  border-radius: 20px;
+}
+#handlebarsModalBox .modalboxContent p {
+  padding-bottom: 30px;
+}
+#handlebarsModalBox .modalboxContent a {
+  color: #f8f8f8;
+  padding: 10px 15px;
+  border: 1px solid #f8f8f8;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#handlebarsModalBox .modalboxContent a:hover {
+  background-color: #f8f8f8;
+  color: #272727;
+}
+.show-modal-box {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh 0;
+}
+@media screen and (max-width: 780px) {
+  .map-container {
+    flex-wrap: wrap;
+    margin-bottom: 7vh;
+  }
+  .map-container #ft-pays-map {
+    width: 100%;
+  }
+}
+.ft-nav-formulaire-file-ariane {
+  padding-bottom: 7vh;
+}
+.ft-nav-formulaire-file-ariane a {
+  margin: 0 10px;
+  border: none !important;
+  position: relative;
+}
+.ft-nav-formulaire-file-ariane a:not(:last-child)::after {
+  content: "\f054";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25em;
+  font-family: "FontAwesome";
+  font-weight: 900;
+}
+.ft-nav-formulaire-file-ariane a::before {
+  content: "";
+  width: 70%;
+  height: 5px;
+  background-color: #272727;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  margin-left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.ft-nav-formulaire-file-ariane a:hover {
+  background-color: white;
+  color: #272727;
+}
+.ft-nav-formulaire-file-ariane a:hover::before {
+  opacity: 1;
+  bottom: -5px;
+}
+@media screen and (max-width: 400px) {
+  .ft-nav-formulaire-file-ariane {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.active-link::before {
+  background-color: #9ffad9 !important;
+  opacity: 1 !important;
+  bottom: -5px !important;
+}
+.active-link:hover::before {
+  background-color: #09f59e !important;
+}
+.disable-link {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}

@@ -1,0 +1,214 @@
+/*
+Theme Name:   Florian TELLIER Theme
+Theme URI:    http://example.com/florian-tellier-theme/
+Description:  Le Theme de Florian TELLIER
+Author:       Florian TELLIER
+Author URI:   http://example.com
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain:  ft-theme
+*/
+@import "assets/css/reset.css";
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/webfonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+form {
+  width: 40%;
+}
+form div {
+  margin-top: 25px;
+}
+form input {
+  margin-top: 10px;
+  padding: 10px 10px;
+  width: 100%;
+  border: 1px solid #1a1a1a;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+}
+form select {
+  padding: 10px 10px;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+}
+form button {
+  margin-top: 20px;
+}
+@media screen and (max-width: 780px) {
+  form {
+    width: 100%;
+  }
+}
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./assets/webfonts/fa-regular-400.woff2") format("woff2"), url("./assets/webfonts/fa-regular-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("./assets/webfonts/fa-solid-900.woff2") format("woff2"), url("./assets/webfonts/fa-solid-900.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FontAwesomeBrands";
+  font-display: block;
+  font-weight: 400;
+  src: url("./assets/webfonts/fa-brands-400.woff2") format("woff2"), url("./assets/webfonts/fa-brands-400.ttf") format("truetype");
+}
+body {
+  font-family: "Montserrat";
+}
+header {
+  padding: 7vh 5vw;
+}
+header h1 {
+  font-size: 2em;
+  font-weight: 900;
+}
+h2 {
+  font-size: 1.5em;
+  font-weight: 900;
+  padding-bottom: 5vh;
+  color: #1a1a1a;
+}
+footer {
+  margin-top: 10vh;
+  padding: 7vh 5vw;
+  border-top: 1px solid #1a1a1a;
+}
+footer p {
+  font-size: 1em;
+  text-align: end;
+}
+.ft_main_content_container {
+  padding: 0vh 10vw;
+}
+button {
+  background-color: #fefcfc00;
+  border: 1px solid #4d4d4d;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: bold;
+  -webkit-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+}
+button:hover {
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+button:hover {
+  background-color: #4d4d4d;
+  color: #f8f8f8;
+}
+a {
+  background-color: #fefcfc00;
+  color: #1a1a1a;
+  border: 1px solid #4d4d4d;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: bold;
+  -webkit-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+}
+a:hover {
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+a:hover {
+  background-color: #4d4d4d;
+  color: #f8f8f8;
+}
+#ft-loading-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+#ft-loading-container .ft-loading {
+  display: inline-block;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 80px;
+}
+#ft-loading-container .ft-loading div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #575656;
+  animation: ft-loading 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+#ft-loading-container .ft-loading div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+#ft-loading-container .ft-loading div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+#ft-loading-container .ft-loading div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes ft-loading {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  60%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+.links_list li {
+  margin: 50px 0;
+}

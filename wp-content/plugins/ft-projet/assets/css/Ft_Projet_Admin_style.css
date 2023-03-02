@@ -1,0 +1,12 @@
+.notice-info {
+  display: none;
+}
+.ft_grid_disable_row {
+  background-color: #d3d3d3 !important;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+#ft-pays-multiselect {
+  height: 300px !important;
+}

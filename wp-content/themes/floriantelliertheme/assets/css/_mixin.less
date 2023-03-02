@@ -1,0 +1,25 @@
+@import (less, reference) "./_variables.less";
+
+.transition(@what: all) {
+  -webkit-transition: @what 700ms @ease_out;
+  -moz-transition: @what 700ms @ease_out;
+  -ms-transition: @what 700ms @ease_out;
+  -o-transition: @what 700ms @ease_out;
+  transition: @what 700ms @ease_out;
+  &:hover {
+    -webkit-transition: @what 400ms @ease_out;
+    -moz-transition: @what 400ms @ease_out;
+    -ms-transition: @what 400ms @ease_out;
+    -o-transition: @what 400ms @ease_out;
+    transition: 400ms @ease_out;
+  }
+}
+
+.rounded( @radius: 7px) when (isnumber(@radius)) {
+  -webkit-border-radius: @radius;
+  -khtml-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
