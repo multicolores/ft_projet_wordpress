@@ -140,6 +140,7 @@ class Ft_Projet_Crud_Index
             array(
                 'id_prospects' => $prospectId,
                 'id_pays' => $paysId,
+                'date_choix' => date("Y-m-d h:i:s"),
             )
         ))
             return "Insert done";
@@ -174,6 +175,16 @@ class Ft_Projet_Crud_Index
         } else {
             return [];
         }
+    }
+
+    public function getProspectDateDernierChoix($prospectId)
+    {
+        global $wpdb;
+        $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
+
+        $sqlGetLastChoixDateOfProspect = "SELECT `date_choix` FROM $table_name_prospects_pays WHERE `id_prospects`=$prospectId";
+
+        return $wpdb->get_results($sqlGetLastChoixDateOfProspect, 'ARRAY_A');
     }
 
     public function getProspectById($prospectId)

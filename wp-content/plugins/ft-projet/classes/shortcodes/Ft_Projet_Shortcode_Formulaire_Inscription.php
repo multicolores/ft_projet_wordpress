@@ -21,13 +21,18 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
 
         // check si le prospect a déjà des pays selectionné
         if (sizeof($paysList) != 0) {
+
             $paysListData = "[['Country'],";
+            // attention certain nom de pays présent dans ma base de donnée ne sont pas compatible avec la carte
             foreach ($paysList as $pays) :
                 $paysListData .= "['" . $pays['nom'] . "'],";
             endforeach;
+
             $paysListData = substr($paysListData, 0, -1);
 
             $paysListData .= "]";
+
+            $lastChoixdate = $Ft_Projet_Crud_Index->getProspectDateDernierChoix($lastProspectId)[0]['date_choix'];
 
             $mapHTML = "
                 <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
@@ -51,7 +56,7 @@ class Ft_Projet_Shortcode_Formulaire_Inscription
                 <h1>Vos pays déjà selectionné : </h1>
                 <div class='map-container'>
                     <div id='ft-pays-map' style='width: 900px; height: 500px;'></div>
-                    <button id='ft-reinitialisation-choix-boutton'>Réinitialiser mes choix</button>
+                    <button id='ft-reinitialisation-choix-boutton'>Réinitialiser mes choix du $lastChoixdate </button>
                 </div>
             ";
         }

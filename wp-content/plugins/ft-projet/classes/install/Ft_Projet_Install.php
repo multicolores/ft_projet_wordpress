@@ -44,6 +44,7 @@ class Ft_Projet_Install
         $sql_create_prospects_pays = "CREATE TABLE IF NOT EXISTS $table_name_prospects_pays (
                 id_prospects mediumint(9) NOT NULL,
                 id_pays mediumint(9) NOT NULL,
+                date_choix DATETIME NOT NULL,
                 FOREIGN KEY (id_prospects) REFERENCES $table_name_prospects(id),
                 FOREIGN KEY (id_pays) REFERENCES $table_name_pays(id)
         ) $charset_collate;";
