@@ -18,7 +18,11 @@ class Ft_Projet_Install
         $table_name_prospects = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects';
         $table_name_prospects_pays = $wpdb->prefix . FT_PROJET_BASE_TABLE_NAME . '_prospects_pays';
 
-        if ($this->isTableBaseAlreadyCreated($table_name_pays, $table_name_prospects, $table_name_prospects_pays))
+        $page = get_page_by_path('choix-voyage');
+        $select_page = get_page_by_path('choix-voyage-step-select');
+        $recap_page = get_page_by_path('choix-voyage-step-final');
+
+        if ($this->isTableBaseAlreadyCreated($table_name_pays, $table_name_prospects, $table_name_prospects_pays) && $page && $select_page && $recap_page)
             return;
 
         $sql_create_pays_table = "CREATE TABLE IF NOT EXISTS $table_name_pays (
@@ -54,9 +58,70 @@ class Ft_Projet_Install
         if (dbDelta($sql_create_pays_table)) {
             $this->createBasePays($table_name_pays);
             if (dbDelta($sql_create_prospects_table))
-                if (dbDelta($sql_create_prospects_pays))
-                    return;
+                dbDelta($sql_create_prospects_pays);
         }
+
+        // ----- Création des pages a l'installation du plugin -----
+        if (!$page) {
+
+            $page = array(
+                'post_title' => 'Inscription au choix voyage',
+                'post_name' => 'choix-voyage',
+                'post_content' => '[FORMULAIRE_FILE_ARIANE] [FORMULAIRE_INSCRIPTION]',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            );
+
+            $page_id = wp_insert_post($page);
+
+            add_rewrite_rule(
+                '^choix-voyage$',
+                'index.php?page_id=' . $page_id,
+                'top'
+            );
+        }
+
+
+        if (!$select_page) {
+
+            $select_page = array(
+                'post_title' => 'Liste des pays',
+                'post_name' => 'choix-voyage-step-select',
+                'post_content' => '[FORMULAIRE_FILE_ARIANE] [FORMULAIRE_SELECTION_PAYS]',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            );
+
+            $select_page_id = wp_insert_post($select_page);
+
+            add_rewrite_rule(
+                '^choix-voyage-step-select$',
+                'index.php?page_id=' . $select_page_id,
+                'top'
+            );
+        }
+
+
+        if (!$recap_page) {
+
+            $recap_page = array(
+                'post_title' => 'Récapitulatif des choix',
+                'post_name' => 'choix-voyage-step-final',
+                'post_content' => '[FORMULAIRE_FILE_ARIANE] [FORMULAIRE_RECAP_PAYS]',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            );
+
+            $recap_page_id = wp_insert_post($recap_page);
+
+            add_rewrite_rule(
+                '^choix-voyage-step-final$',
+                'index.php?page_id=' . $recap_page_id,
+                'top'
+            );
+        }
+
+        return;
     }
 
     public function isTableBaseAlreadyCreated($table_name_pays, $table_name_prospects, $table_name_prospects_pays)

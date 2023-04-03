@@ -7,18 +7,21 @@ class Ft_Projet_Shortcode_Formulaire_Recap_Pays
 
     static function display()
     {
+        $paysListHTML = "";
+
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
         $lastProspectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
 
-        $paysList = $Ft_Projet_Crud_Index->getProspectPays($lastProspectId);
+        if ($lastProspectId) {
+            $paysList = $Ft_Projet_Crud_Index->getProspectPays($lastProspectId);
 
-        $paysListHTML = "";
-        foreach ($paysList as $pays) :
-            $unstarValue = 5 - intval($pays['note']);
-            $starsHTML = '<span class="star-' . $pays['note'] . '"></span><span class="empty-star-' . $unstarValue . '"></span>';
+            foreach ($paysList as $pays) :
+                $unstarValue = 5 - intval($pays['note']);
+                $starsHTML = '<span class="star-' . $pays['note'] . '"></span><span class="empty-star-' . $unstarValue . '"></span>';
 
-            $paysListHTML .= '<li>' . $starsHTML . $pays['nom'] . '</li>';
-        endforeach;
+                $paysListHTML .= '<li>' . $starsHTML . $pays['nom'] . '</li>';
+            endforeach;
+        }
 
         return "
             <ul class='ft_pays_list_container'>
