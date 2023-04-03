@@ -7,14 +7,18 @@ class Ft_Projet_Shortcode_Formulaire_Selection_Pays
 
     static function display($atts)
     {
+        $paysOptionsList = "";
+
         $Ft_Projet_Crud_Index = new Ft_Projet_Crud_Index();
         $lastProspectId = $Ft_Projet_Crud_Index->getLastProspectCreatedID();
-        $paysList = $Ft_Projet_Crud_Index->getPaysAboutProspectAge($lastProspectId);
 
-        $paysOptionsList = "";
-        foreach ($paysList as $pays) :
-            $paysOptionsList .= '<option value="' . $pays['id'] . '">' . $pays['nom'] . '</option>';
-        endforeach;
+        if ($lastProspectId) {
+            $paysList = $Ft_Projet_Crud_Index->getPaysAboutProspectAge($lastProspectId);
+
+            foreach ($paysList as $pays) :
+                $paysOptionsList .= '<option value="' . $pays['id'] . '">' . $pays['nom'] . '</option>';
+            endforeach;
+        }
 
         return "
         <form id='ft-form-pays-list-select'>

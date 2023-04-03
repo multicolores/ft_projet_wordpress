@@ -207,7 +207,9 @@ class Ft_Projet_Crud_Index
         $sql = "SELECT * FROM $table_name_prospects WHERE `id`= (SELECT MAX(`id`) FROM $table_name_prospects)";
 
         $prospect = $wpdb->get_results($sql, 'ARRAY_A');
-
-        return $prospect[0]['id'];
+        if ($prospect)
+            return $prospect[0]['id'];
+        else
+            return null;
     }
 }
