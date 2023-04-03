@@ -1,6 +1,6 @@
 # Projet plugin wordpress Florian TELLIER
 
-## Pages front, il faut créer 3 pages avec dans chacune 2 shortcode :
+## A l'installation du plugin, 3 pages avec dans chacune 2 shortcode vont être créer automatiquement ( si une page ayant le même url éxiste déjà, ma page ne serras pas créer ) :
 
 - slug : /choix-voyage
   [FORMULAIRE_FILE_ARIANE] \
